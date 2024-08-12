@@ -14,7 +14,7 @@ import nltk
 from nltk.corpus import stopwords
 
 # Access the environment variable
-#OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 st.write(f"OPENAI_API_KEY: {OPENAI_API_KEY}")
 
 if OPENAI_API_KEY is None:

@@ -13,6 +13,9 @@ import openai
 import nltk
 from nltk.corpus import stopwords
 
+# Define the scope for Gmail API access
+SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
+
 # Cache the download of NLTK stopwords
 @st.cache_resource
 def download_nltk_stopwords():

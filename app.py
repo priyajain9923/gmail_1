@@ -12,8 +12,7 @@ import io
 import openai
 import nltk
 from nltk.corpus import stopwords
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 # Access the environment variable
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 st.write(f"OPENAI_API_KEY: {OPENAI_API_KEY}")
@@ -24,33 +23,17 @@ else:
     st.success("OPENAI_API_KEY is set.")
     openai.api_key = OPENAI_API_KEY
     client = openai  # Use this line instead of openai.OpenAI(api_key=...)
-
-    
+   
 # Instantiate the OpenAI client
 #client = openai.OpenAI(api_key=OPENAI_API_KEY)
 
-=======
-import config
+# Cache the download of NLTK stopwords
+@st.cache_resource
+def download_nltk_stopwords():
+    nltk.download('stopwords')
+    return set(stopwords.words('english'))
 
-openai.api_key = config.api_key
->>>>>>> d3e8f66 (updated)
-=======
-
-# Access the environment variable
-OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
-st.write(f"OPENAI_API_KEY: {OPENAI_API_KEY}")
->>>>>>> d11eced (Update .gitignore and app.py)
-
-if OPENAI_API_KEY is None:
-    st.error("The OPENAI_API_KEY environment variable is not set.")
-else:
-    st.success("OPENAI_API_KEY is set.")
-    openai.api_key = OPENAI_API_KEY
-    client = openai  # Use this line instead of openai.OpenAI(api_key=...)
-
-    
-# Instantiate the OpenAI client
-#client = openai.OpenAI(api_key=OPENAI_API_KEY)
+stop_words = download_nltk_stopwords()
 
 # Authentication and API service
 @st.cache_resource
